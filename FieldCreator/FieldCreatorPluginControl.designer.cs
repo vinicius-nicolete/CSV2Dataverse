@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FieldCreatorPluginControl));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
             this.tssSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btn_downloadtemplate = new System.Windows.Forms.Button();
+            this.btnSelectSolution = new System.Windows.Forms.ToolStripButton();
             this.txt_path = new System.Windows.Forms.TextBox();
             this.btn_browse = new System.Windows.Forms.Button();
             this.lst_csvlines = new System.Windows.Forms.ListBox();
@@ -49,6 +50,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDownloadTemplate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.txtNameSolution = new System.Windows.Forms.TextBox();
             this.toolStripMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -62,10 +66,13 @@
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbClose,
-            this.tssSeparator1});
+            this.toolStripSeparator1,
+            this.btnSelectSolution,
+            this.tssSeparator1,
+            this.btnDownloadTemplate});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(1133, 29);
+            this.toolStripMenu.Size = new System.Drawing.Size(1133, 25);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
             // 
@@ -73,29 +80,24 @@
             // 
             this.tsbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsbClose.Name = "tsbClose";
-            this.tsbClose.Size = new System.Drawing.Size(34, 23);
+            this.tsbClose.Size = new System.Drawing.Size(30, 22);
             this.tsbClose.Text = "Exit";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
             // tssSeparator1
             // 
             this.tssSeparator1.Name = "tssSeparator1";
-            this.tssSeparator1.Size = new System.Drawing.Size(6, 26);
+            this.tssSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // btn_downloadtemplate
+            // btnSelectSolution
             // 
-            this.btn_downloadtemplate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_downloadtemplate.BackColor = System.Drawing.Color.Silver;
-            this.btn_downloadtemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_downloadtemplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.163636F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_downloadtemplate.Location = new System.Drawing.Point(454, 3);
-            this.btn_downloadtemplate.MinimumSize = new System.Drawing.Size(169, 40);
-            this.btn_downloadtemplate.Name = "btn_downloadtemplate";
-            this.btn_downloadtemplate.Size = new System.Drawing.Size(169, 40);
-            this.btn_downloadtemplate.TabIndex = 5;
-            this.btn_downloadtemplate.Text = "Download";
-            this.btn_downloadtemplate.UseVisualStyleBackColor = false;
-            this.btn_downloadtemplate.Click += new System.EventHandler(this.btn_downloadtemplate_Click);
+            this.btnSelectSolution.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnSelectSolution.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectSolution.Image")));
+            this.btnSelectSolution.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSelectSolution.Name = "btnSelectSolution";
+            this.btnSelectSolution.Size = new System.Drawing.Size(89, 22);
+            this.btnSelectSolution.Text = "Select Solution";
+            this.btnSelectSolution.Click += new System.EventHandler(this.btnSelectSolution_Click);
             // 
             // txt_path
             // 
@@ -133,12 +135,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lst_csvlines.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.12727F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lst_csvlines.FormattingEnabled = true;
-            this.lst_csvlines.ItemHeight = 20;
+            this.lst_csvlines.ItemHeight = 18;
             this.lst_csvlines.Location = new System.Drawing.Point(103, 46);
             this.lst_csvlines.MinimumSize = new System.Drawing.Size(850, 4);
             this.lst_csvlines.Name = "lst_csvlines";
             this.lst_csvlines.ScrollAlwaysVisible = true;
-            this.lst_csvlines.Size = new System.Drawing.Size(927, 344);
+            this.lst_csvlines.Size = new System.Drawing.Size(927, 328);
             this.lst_csvlines.TabIndex = 8;
             // 
             // btn_submit
@@ -209,11 +211,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.32727F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_title.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_title.Location = new System.Drawing.Point(103, 28);
+            this.lbl_title.Location = new System.Drawing.Point(103, 30);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(192, 32);
+            this.lbl_title.Size = new System.Drawing.Size(207, 29);
             this.lbl_title.TabIndex = 0;
-            this.lbl_title.Text = "Field Creator";
+            this.lbl_title.Text = "CSV2Dataverse";
             this.lbl_title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lklbl_documentation
@@ -221,9 +223,9 @@
             this.lklbl_documentation.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lklbl_documentation.AutoSize = true;
             this.lklbl_documentation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.818182F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lklbl_documentation.Location = new System.Drawing.Point(807, 34);
+            this.lklbl_documentation.Location = new System.Drawing.Point(833, 36);
             this.lklbl_documentation.Name = "lklbl_documentation";
-            this.lklbl_documentation.Size = new System.Drawing.Size(223, 20);
+            this.lklbl_documentation.Size = new System.Drawing.Size(197, 17);
             this.lklbl_documentation.TabIndex = 1;
             this.lklbl_documentation.TabStop = true;
             this.lklbl_documentation.Text = "Documentation / Source Code";
@@ -249,11 +251,11 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(103, 11);
+            this.label1.Location = new System.Drawing.Point(103, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 24);
+            this.label1.Size = new System.Drawing.Size(134, 20);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Download Sample Template";
+            this.label1.Text = "Selected Solution";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -261,9 +263,9 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(103, 10);
+            this.label2.Location = new System.Drawing.Point(103, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 24);
+            this.label2.Size = new System.Drawing.Size(97, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Upload CSV";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,12 +273,12 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.lbl_title, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lklbl_documentation, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 29);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.tableLayoutPanel1.RowCount = 1;
@@ -289,14 +291,15 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 351F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.txtNameSolution, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_downloadtemplate, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 118);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 114);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1133, 47);
             this.tableLayoutPanel2.TabIndex = 16;
             // 
@@ -310,11 +313,12 @@
             this.tableLayoutPanel3.Controls.Add(this.txt_path, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_browse, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 165);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 161);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1133, 45);
             this.tableLayoutPanel3.TabIndex = 17;
             // 
@@ -329,7 +333,7 @@
             this.tableLayoutPanel4.Controls.Add(this.btn_refresh, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_submit, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 210);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 206);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.tableLayoutPanel4.RowCount = 1;
@@ -345,7 +349,7 @@
             this.tableLayoutPanel5.Controls.Add(this.richTextBox3, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lst_csvlines, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 290);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 286);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.tableLayoutPanel5.RowCount = 2;
@@ -353,6 +357,36 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1133, 404);
             this.tableLayoutPanel5.TabIndex = 19;
+            // 
+            // btnDownloadTemplate
+            // 
+            this.btnDownloadTemplate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnDownloadTemplate.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadTemplate.Image")));
+            this.btnDownloadTemplate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDownloadTemplate.Name = "btnDownloadTemplate";
+            this.btnDownloadTemplate.Size = new System.Drawing.Size(116, 22);
+            this.btnDownloadTemplate.Text = "Download Template";
+            this.btnDownloadTemplate.Click += new System.EventHandler(this.btnDownloadTemplate_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // txtNameSolution
+            // 
+            this.txtNameSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNameSolution.BackColor = System.Drawing.Color.Silver;
+            this.txtNameSolution.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtNameSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.12727F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameSolution.Location = new System.Drawing.Point(454, 3);
+            this.txtNameSolution.MinimumSize = new System.Drawing.Size(325, 4);
+            this.txtNameSolution.Multiline = true;
+            this.txtNameSolution.Name = "txtNameSolution";
+            this.txtNameSolution.ReadOnly = true;
+            this.txtNameSolution.Size = new System.Drawing.Size(576, 38);
+            this.txtNameSolution.TabIndex = 7;
             // 
             // FieldCreatorPluginControl
             // 
@@ -389,7 +423,6 @@
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton tsbClose;
         private System.Windows.Forms.ToolStripSeparator tssSeparator1;
-        private System.Windows.Forms.Button btn_downloadtemplate;
         private System.Windows.Forms.TextBox txt_path;
         private System.Windows.Forms.Button btn_browse;
         private System.Windows.Forms.ListBox lst_csvlines;
@@ -407,5 +440,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.ToolStripButton btnSelectSolution;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnDownloadTemplate;
+        private System.Windows.Forms.TextBox txtNameSolution;
     }
 }

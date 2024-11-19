@@ -7,14 +7,20 @@ using McTools.Xrm.Connection;
 using System.Reflection;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Xrm.Sdk.Metadata;
+using System.Globalization;
+using System.Linq;
+using FieldCreator.TyCorcoran.Forms;
 
 namespace FieldCreator.TyCorcoran
 {
     public partial class FieldCreatorPluginControl : PluginControlBase
     {
+        private Entity _solution;
         private Settings mySettings;
-        public static List<string> ImportLogs = new List<string> ();
-        public static List<string> ImportEntities = new List<string> ();
+        public static List<string> ImportLogs = new List<string>();
+        public static List<string> ImportEntities = new List<string>();
         public static List<Attribute> ImportGlobalOptionSets = new List<Attribute>();
 
         public FieldCreatorPluginControl()
@@ -94,29 +100,6 @@ namespace FieldCreator.TyCorcoran
             });
         }
 
-        private void btn_downloadtemplate_Click(object sender, EventArgs e)
-        {
-            var saveTemplate = new SaveFileDialog
-            {
-                Filter = @"Excel File|*.xlsx",
-                FileName = "FieldCreator_Template.xlsx",
-                OverwritePrompt = true
-            };
-            if (saveTemplate.ShowDialog(this) == DialogResult.OK)
-            {
-                var assembly = Assembly.GetExecutingAssembly();
-                var template = "FieldCreator.TyCorcoran.FieldCreator.Templates.FieldCreator_Template.xlsx";
-                using (Stream stream = assembly.GetManifestResourceStream(template))
-                {
-                    using (FileStream file = new FileStream(saveTemplate.FileName, FileMode.Create, FileAccess.Write))
-                    {
-                        stream.CopyTo(file);
-                    }
-                }
-                MessageBox.Show("Template Downloaded");
-            }
-        }
-        
         private void btn_browse_Click(object sender, EventArgs e)
         {
             var selectedFile = new OpenFileDialog
@@ -194,6 +177,43 @@ namespace FieldCreator.TyCorcoran
         {
             Process.Start("https://tldr-dynamics.com/blog/field-creator/");
             e.Link.Visited = true;
+        }
+
+        private void btnSelectSolution_Click(object sender, EventArgs e)
+        {
+            _solution = null;
+
+            var sPicker = new SolutionPicker(Service);
+            if (sPicker.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+
+            _solution = sPicker.SelectedSolution.First();
+            txtNameSolution.Text = _solution.GetAttributeValue<string>("friendlyname");
+        }
+
+        private void btnDownloadTemplate_Click(object sender, EventArgs e)
+        {
+            var saveTemplate = new SaveFileDialog
+            {
+                Filter = @"Excel File|*.xlsx",
+                FileName = "FieldCreator_Template.xlsx",
+                OverwritePrompt = true
+            };
+            if (saveTemplate.ShowDialog(this) == DialogResult.OK)
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var template = "FieldCreator.TyCorcoran.FieldCreator.Templates.FieldCreator_Template.xlsx";
+                using (Stream stream = assembly.GetManifestResourceStream(template))
+                {
+                    using (FileStream file = new FileStream(saveTemplate.FileName, FileMode.Create, FileAccess.Write))
+                    {
+                        stream.CopyTo(file);
+                    }
+                }
+                MessageBox.Show("Template Downloaded");
+            }
         }
     }
 }
