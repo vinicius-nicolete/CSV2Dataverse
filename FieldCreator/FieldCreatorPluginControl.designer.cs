@@ -31,8 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FieldCreatorPluginControl));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.tsbClose = new System.Windows.Forms.ToolStripButton();
-            this.tssSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSelectSolution = new System.Windows.Forms.ToolStripButton();
+            this.tssSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnDownloadTemplate = new System.Windows.Forms.ToolStripButton();
             this.txt_path = new System.Windows.Forms.TextBox();
             this.btn_browse = new System.Windows.Forms.Button();
             this.lst_csvlines = new System.Windows.Forms.ListBox();
@@ -47,12 +49,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtNameSolution = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnDownloadTemplate = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.txtNameSolution = new System.Windows.Forms.TextBox();
             this.toolStripMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -84,10 +84,10 @@
             this.tsbClose.Text = "Exit";
             this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
             // 
-            // tssSeparator1
+            // toolStripSeparator1
             // 
-            this.tssSeparator1.Name = "tssSeparator1";
-            this.tssSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // btnSelectSolution
             // 
@@ -98,6 +98,21 @@
             this.btnSelectSolution.Size = new System.Drawing.Size(89, 22);
             this.btnSelectSolution.Text = "Select Solution";
             this.btnSelectSolution.Click += new System.EventHandler(this.btnSelectSolution_Click);
+            // 
+            // tssSeparator1
+            // 
+            this.tssSeparator1.Name = "tssSeparator1";
+            this.tssSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnDownloadTemplate
+            // 
+            this.btnDownloadTemplate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnDownloadTemplate.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadTemplate.Image")));
+            this.btnDownloadTemplate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDownloadTemplate.Name = "btnDownloadTemplate";
+            this.btnDownloadTemplate.Size = new System.Drawing.Size(116, 22);
+            this.btnDownloadTemplate.Text = "Download Template";
+            this.btnDownloadTemplate.Click += new System.EventHandler(this.btnDownloadTemplate_Click);
             // 
             // txt_path
             // 
@@ -303,6 +318,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1133, 47);
             this.tableLayoutPanel2.TabIndex = 16;
             // 
+            // txtNameSolution
+            // 
+            this.txtNameSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNameSolution.BackColor = System.Drawing.Color.Silver;
+            this.txtNameSolution.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtNameSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.12727F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameSolution.Location = new System.Drawing.Point(454, 3);
+            this.txtNameSolution.MinimumSize = new System.Drawing.Size(325, 4);
+            this.txtNameSolution.Multiline = true;
+            this.txtNameSolution.Name = "txtNameSolution";
+            this.txtNameSolution.ReadOnly = true;
+            this.txtNameSolution.Size = new System.Drawing.Size(576, 38);
+            this.txtNameSolution.TabIndex = 7;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -357,36 +387,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1133, 404);
             this.tableLayoutPanel5.TabIndex = 19;
-            // 
-            // btnDownloadTemplate
-            // 
-            this.btnDownloadTemplate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnDownloadTemplate.Image = ((System.Drawing.Image)(resources.GetObject("btnDownloadTemplate.Image")));
-            this.btnDownloadTemplate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDownloadTemplate.Name = "btnDownloadTemplate";
-            this.btnDownloadTemplate.Size = new System.Drawing.Size(116, 22);
-            this.btnDownloadTemplate.Text = "Download Template";
-            this.btnDownloadTemplate.Click += new System.EventHandler(this.btnDownloadTemplate_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // txtNameSolution
-            // 
-            this.txtNameSolution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNameSolution.BackColor = System.Drawing.Color.Silver;
-            this.txtNameSolution.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtNameSolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.12727F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNameSolution.Location = new System.Drawing.Point(454, 3);
-            this.txtNameSolution.MinimumSize = new System.Drawing.Size(325, 4);
-            this.txtNameSolution.Multiline = true;
-            this.txtNameSolution.Name = "txtNameSolution";
-            this.txtNameSolution.ReadOnly = true;
-            this.txtNameSolution.Size = new System.Drawing.Size(576, 38);
-            this.txtNameSolution.TabIndex = 7;
             // 
             // FieldCreatorPluginControl
             // 

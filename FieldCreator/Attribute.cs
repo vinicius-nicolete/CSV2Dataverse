@@ -12,6 +12,7 @@ using Microsoft.Xrm.Sdk.Metadata;
 using CsvHelper;
 using CsvHelper.Configuration.Attributes;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace FieldCreator.TyCorcoran
 {
@@ -125,7 +126,7 @@ namespace FieldCreator.TyCorcoran
                     var createOptionSetMeta = new OptionSetMetadata(globalOSCollection)
                     {
                         Name = Regex.Replace(optionSetSchemaName, regexSantizedName, string.Empty),
-                        DisplayName = new Label(optionSetDisplayName, CultureInfo.CurrentCulture.LCID),
+                        DisplayName = new Microsoft.Xrm.Sdk.Label(optionSetDisplayName, CultureInfo.CurrentCulture.LCID),
                         IsGlobal = true,
                         OptionSetType = Microsoft.Xrm.Sdk.Metadata.OptionSetType.Picklist
                     };
@@ -176,7 +177,7 @@ namespace FieldCreator.TyCorcoran
                             {
                                 Behavior = AssociatedMenuBehavior.UseLabel,
                                 Group = AssociatedMenuGroup.Details,
-                                Label = new Label(attribute.AttrEntitySchemaName, CultureInfo.CurrentCulture.LCID),
+                                Label = new Microsoft.Xrm.Sdk.Label(attribute.AttrEntitySchemaName, CultureInfo.CurrentCulture.LCID),
                                 Order = 10000
                             },
                             CascadeConfiguration = new CascadeConfiguration
